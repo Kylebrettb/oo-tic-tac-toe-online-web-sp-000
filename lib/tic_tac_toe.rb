@@ -3,7 +3,7 @@ class TicTacToe
   def initialize
     @board = Array.new(9," ")
   end
- def display_@board (board)
+ def display_board (board)
 puts " #{board[0]} | #{board[1]} | #{board[2]} "
 puts "-----------"
 puts " #{board[3]} | #{board[4]} | #{board[5]} "
@@ -32,7 +32,7 @@ def turn(board)
   index = input_to_index(user_input)
   if valid_move?(board, index)
     move(board, index, current_player(board))
-    display_@board(board)
+    display_board(board)
   else
     turn(board)
   end
