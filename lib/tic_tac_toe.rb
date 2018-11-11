@@ -35,10 +35,10 @@ def turn
     move(board, index, current_player(board))
     display_board(board)
   else
-    turn(board)
+    turn
   end
 end
- def turn_count(board)
+ def turn_count
 counter = 0    
 @board.each do |position|
     if (position == "X" || position == "O")
@@ -48,14 +48,14 @@ counter = 0
 end
     counter
   end
-def current_player(board)
+def current_player
  if turn_count(board)  % 2 != 0
    "O"
  else 
    "X"
 end
 end
-def won?(board)
+def won?
   WIN_COMBINATIONS.each do |win_combo|
     if win_combo.all?{ |i| board[i] == "X"} || win_combo.all?{ |i| board[i] == "O"}
      return win_combo
@@ -63,26 +63,26 @@ def won?(board)
   end
   false
 end
-def full?(board)
+def full?
   @board.all?{|v| v== "X" || v == "O"}
 end
-def draw?(board)
+def draw?
   full?(board)&& !won?(board)
 end
-def over?(board)
+def over?
   won?(board) || draw?(board) || full?(board)
 end
-def winner(board)
-  if win_combo = won?(board)
+def winner
+  if win_combo = won?
     winner = @board[win_combo.first]
   end
   winner
 end
-def play(board)
-   turn(board) until over?(board)
-  if won?(board)
+def play
+   turn(board) until over?
+  if won?
     puts  "Congratulations #{winner(board)}!"
-  else  draw?(board)
+  else  draw?
     puts "Cat's Game!"
  
   end
