@@ -79,9 +79,9 @@ def winner
   winner
 end
 def play
-   turn(board) until over?
+   turn until over?
   if won?
-    puts  "Congratulations #{winner(board)}!"
+    puts  "Congratulations #{winner}!"
   else  draw?
     puts "Cat's Game!"
  
