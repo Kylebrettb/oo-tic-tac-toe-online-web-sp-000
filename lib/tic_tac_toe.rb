@@ -14,20 +14,20 @@ end
 def input_to_index(user_input)
  user_input.to_i - 1
 end
-def move(board,position,player)
+def move(position,player)
   @board[position] = player
 end
- def position_taken?(board,index)
+ def position_taken?(index)
    if (board[index] == "" || board[index] == " " || board[index] == nil)
         false
     else
         true
     end
 end
- def valid_move?(board,index)
+ def valid_move?(index)
   index.between?(0,8) && !position_taken?(board, index)
 end
-def turn(board)
+def turn
   puts 'Please enter 1-9:'
   user_input = gets.strip
   index = input_to_index(user_input)
