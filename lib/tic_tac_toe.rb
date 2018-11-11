@@ -25,15 +25,15 @@ end
     end
 end
  def valid_move?(index)
-  index.between?(0,8) && !position_taken?(board, index)
+  index.between?(0,8) && !position_taken?(index)
 end
 def turn
   puts 'Please enter 1-9:'
   user_input = gets.strip
   index = input_to_index(user_input)
-  if valid_move?(board, index)
-    move(board, index, current_player(board))
-    display_board(board)
+  if valid_move?(index)
+    move( index, current_player)
+    display_board
   else
     turn
   end
@@ -49,7 +49,7 @@ end
     counter
   end
 def current_player
- if turn_count(board)  % 2 != 0
+ if turn_count  % 2 != 0
    "O"
  else 
    "X"
@@ -67,10 +67,10 @@ def full?
   @board.all?{|v| v== "X" || v == "O"}
 end
 def draw?
-  full?(board)&& !won?(board)
+  full?&& !won?
 end
 def over?
-  won?(board) || draw?(board) || full?(board)
+  won? || draw? || full?
 end
 def winner
   if win_combo = won?
